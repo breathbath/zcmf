@@ -1,0 +1,115 @@
+<style type="text/css" media="screen">
+    #progress{display: none; font-size: 12px}
+    .progressWrapper {display:inline-block; width:500px}
+    .ers {
+        text-transform: uppercase;
+        color: red;
+        list-style: none;
+        font-weight: bold;
+        min-height: 15px;
+        padding-top: 5px;
+        text-align:center;
+    }
+    .progressWrapper .progressContainer {
+        overflow: auto;
+        zoom: 1;
+        color: blue;
+    }
+    .progressWrapper .progressName {float:left}
+    .progressWrapper .progressBar .progressBarComplete, .progressWrapper .progressBar .progressBarInProgress {height: 100%;background-color: #ADD240;}
+    .progressWrapper .progressName {
+        float: left;
+    }
+    .progressWrapper .closer {
+        cursor: pointer;
+        float: right;
+        margin-left: 1em;
+        display: none;}
+    .progressWrapper .progressBarStatus {
+        text-align: left;
+        color: #888;
+
+    }
+    .progressWrapper .progressBar {
+        height: 11px;
+        background-color: #888;
+        margin: 4px 0;
+        clear: both;
+    }
+    #progress{text-align: center}
+    .progressWrapper .progressBar .progressBarError {
+        height: 100%;
+        background-color: red;}
+    ul#upload_error{
+    	margin: 0 auto;
+		width: 500px;
+		list-style: initial;
+		color: red;
+		font-size: 11px;
+    }
+    ul#upload_error li{
+    	list-style: inside;
+    	text-align: center;
+    }
+
+</style>
+
+<?=$this->admin_Head('Резервные копии сайта');?>
+<?=$this->admin_Bodybegin()?>
+
+<a onclick="backuping()" class="z-button z-button-top z-additional-button  ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Создать резервную копию</span></a>
+
+<div class="mainblock">    
+       <div id="progress">
+         <div class="progressWrapper" id="progressWrapper" style="opacity: 1; display: inline-block; ">
+            <div class="progressContainer green">
+                <div class="progressBarStatus"><span id="text">Формирую сценарий</span> (<span id="percent">0%</span>)</div>
+                <div class="progressBar">
+                    <div class="progressBarComplete" style="width: 0%; "></div>
+                </div>
+             	
+            </div>
+         </div>
+       </div>
+       <ul id="upload_error"></ul>            
+</div> 
+	<table class="ui-widget ui-corner-all" id="z-grid">
+		<thead class="ui-widget-header ui-corner-top z-grid-header">
+			<tr>
+					<th>
+						Дата создания резервной копии
+					</th>
+					<th>
+						Размер файла резервной копии
+					</th>
+					<th>
+						Ссылка на скачивание файла резервной копии
+					</th>
+				<th width="1%"></th>
+			</tr>
+		</thead>
+		<tbody class="ui-widget-content ui-corner-bottom z-grid-content">
+<?php if(count($this->backups)):?>		
+<?php foreach ($this->backups as $item):?>
+			<tr class="ui-widget-content">
+				<td>
+					<?=isset($item['date'])?$item['date']:''?><br>
+				</td>
+				<td>
+					<?=isset($item['size'])?$item['size']:''?><br>
+				</td>
+				<td>
+					<a href="/admin/z_backup/download/id/<?=$item['name']?>">Скачать</a><br>
+				</td>
+				<td>
+				</td>
+			</tr>		
+<?php endforeach;?>
+<?php endif;?>
+		</tbody>
+	</table>
+<?php if(!count($this->backups)):?>	
+		<p id="nobackups" style="padding:10px">Сохраненные резервные копии отсутствуют!</p>	
+<?php endif;?>	
+	<div class="clear"></div>
+<?=$this->admin_Bodyend()?>

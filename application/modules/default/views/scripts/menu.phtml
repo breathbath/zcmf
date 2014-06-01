@@ -1,0 +1,16 @@
+<ul class="menu-top">
+    <?php $i = 0;
+    foreach ($this->items as $item): $i++; ?>
+        <?php
+        $class = '';
+        if ($item->id == $this->activeId)
+            $class.=' cur';
+        if ($i == count($this->items))
+            $class.=' last';
+        ?>    
+        <li <?php if ($class)
+            echo 'class="' . $class . '"'; ?>>
+            <a href="<?= $item->url ?>"><?= $item->title ?></a>
+        </li>
+<?php endforeach; ?>
+</ul>

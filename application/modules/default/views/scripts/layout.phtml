@@ -1,0 +1,68 @@
+<?=$this->docType('XHTML1_STRICT')?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+<?=$this->headTitle(Z_Seo::getTitle())?>
+
+<?=$this->headMeta()->appendHttpEquiv('Content-Type','text/html; charset=UTF-8')
+	->appendName('keywords', Z_Seo::getKeywords())
+	->appendName('description', Z_Seo::getDescription());?>
+
+<?=$this->headLink()
+	->headLink(array('rel' => 'shortcut icon', 'href' => '/favicon.ico'))
+	->appendStylesheet( '/img/style.css' )
+	->appendStylesheet( '/img/ie.css', null, "IE")?>
+
+<?=$this->headScript()
+	->appendFile('/js/jquery.js')
+	->appendFile('/js/main.js')?>
+    
+    
+</head>
+
+<body>
+
+<div id="spacer">
+
+	<div id="header">
+	    <div class="wrapper">
+	        <a href="/" id="logo"></a>
+	        
+	<!--
+$this->placeholder('menu')->set($this->menu())
+	echo $this->placeholder('menu')
+-->
+	
+	    </div>
+	</div><!-- #header-->
+
+
+    <div id="content">
+
+
+		
+				
+					<?php echo $this->layout()->content?>
+					
+					    </div>
+	</div><!-- #content-->
+	
+	<div class="clear">Как бы не было беды!</div>
+
+</div>
+
+<div id="footer">
+    <div class="wrapper">
+<?php echo $this->placeholder('menu')?>
+        <div class="counter">
+        	<?php echo $this->z_Config('counter')?>
+        </div>
+        <div class="copy">
+            <?php echo $this->z_Config('copy')?>
+        </div>
+    </div>
+</div><!-- #footer -->
+
+</body>
+</html>

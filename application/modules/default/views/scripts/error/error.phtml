@@ -1,0 +1,24 @@
+<?php if ('development' == APPLICATION_ENV): ?>
+<h2><?php echo $this->message ?></h2>
+
+<?php if ($this->exception instanceof Exception): ?>
+    <h3>Информация:</h3>
+    <p>
+        <b>Сообщение:</b> <?=($this->exception instanceof Exception) ? $this->exception->getMessage() : ''?>
+    </p>
+    <?php endif; ?>
+
+    <h3>Трассировка:</h3>
+    <pre><?=($this->exception instanceof Exception) ? $this->exception->getTraceAsString() : ''?>
+  </pre>
+
+    <h3>Параметры запроса:</h3>
+    <pre><?=($this->exception instanceof Exception) ? var_export($this->request->getParams(), true) : ''?>
+  </pre>
+    <?php else: ?>
+
+<?php $this->placeholder('top')->set('<h1>Страницы не существует.</h1>') ?>
+
+    <?= $this->z_Config('error_text') ?>
+
+<?php endif; ?>

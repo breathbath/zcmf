@@ -1,0 +1,36 @@
+
+<?php $controller = $this->controller?$this->controller:Zend_Controller_Front::getInstance()->getRequest()->getParam('controller'); ?>
+<?php $query =Zend_Controller_Front::getInstance()->getRequest()->getParam('query'); ?>
+<?php $router = $this->router?$this->router:'default';?>
+<?php if ($this->pageCount > 1): ?>
+    <ul class="pagenav inner">
+
+        <?php if ($this->current > 1): ?>
+            <li>
+                <a title="Первая" href="<?= $this->url(array('page' => (string) $this->first,'controller'=>$controller?$controller:NULL),$router); ?><?=$query?'?query='.$query:''?>">Первая</a>
+            </li>    
+            <li>
+                <a title="Предыдущая" href="
+                       <?= $this->url(array('page' => (string) ($this->previous ? $this->previous : 1),'controller'=>$controller?$controller:NULL),$router); ?><?=$query?'?query='.$query:''?>">Предыдущая</a>
+            </li>    
+        <?php endif; ?>
+        <?php foreach ($this->pagesInRange as $page): ?>
+
+            <li <?= $page == $this->current ? 'class="cur"' : '' ?>> 
+                <a href="<?= $this->url(array('page' => (string) ($page ? $page : 1),'controller'=>$controller?$controller:NULL),$router); ?><?=$query?'?query='.$query:''?>">			  
+                    <?= $page; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+        <?php if ($this->current != count($this->pagesInRange)): ?>
+            <li>
+                <a title="Следующая" href="
+                    <?= $this->url(array('page' => (string) ($this->next ? $this->next : '1'),'controller'=>$controller?$controller:NULL),$router); ?><?=$query?'?query='.$query:''?>">Следующая</a>
+            </li>
+            <li>
+                <a title="Последняя" href="
+                        <?= $this->url(array('page' => (string) $this->last,'controller'=>$controller?$controller:NULL),$router); ?><?=$query?'?query='.$query:''?>">Последняя</a>
+            </li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>

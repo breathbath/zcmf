@@ -1,0 +1,59 @@
+<?=$this->admin_Head('Список обновлений!');?>
+<?=$this->admin_Bodybegin()?>
+<?php if(count($this->items)):?>
+<form id="z-admin-form-8945974" enctype="multipart/form-data" method="post" class="z-form" action="<?=$this->url(array('action'=>'install'))?>">
+	<table class="ui-widget ui-corner-all" id="z-grid">
+		<thead class="ui-widget-header ui-corner-top z-grid-header">
+			<tr>
+				<th width="2%">
+					№
+				</th>
+					<td width="3%"></td>
+
+					<th width="10%">
+						Дата
+					</th>
+					<th>
+						<table>
+						<thead>
+						<tr>
+							<th>Текст</th>
+						</tr>
+						</thead>
+						</table>
+					</th>
+				<th width="1%"></th>
+			</tr>
+		</thead>
+		<tbody class="ui-widget-content ui-corner-bottom z-grid-content">
+<?php $num=0;foreach ($this->items as $item): ?>
+	<?php if(isset($item['file'])):$num++;?>
+			<tr id="<?=$item['file']?>" class="ui-widget-content">
+				<td>
+					<?=$num?>
+				</td>
+					<td class="nowrap">
+						<input type="radio" name="updates[]" id="<?=$item['file']?>" value="<?=$item['file']?>" class="z-form-checkbox" <?=$num==1?'checked="1"':''?>>
+					</td>
+					<td>
+						<?=isset($item['when'])?$item['when']:''?><br>
+					</td>
+					<td>
+						<?=isset($item['text'])?$item['text']:''?><br>
+					</td>
+				<td>
+				</td>
+			</tr>
+	<?php endif;?>		
+<?php endforeach;?>
+		</tbody>
+	</table>
+	<div class="clear"></div>
+<br/>
+<input type="submit" name="apply" id="apply" value="Установить" class="z-form-apply ui-button ui-state-default ui-corner-all z-button">
+
+</form>
+<?php else:?>
+<p>Обновлений нет</p>
+<?php endif;?>
+<?=$this->admin_Bodyend()?>

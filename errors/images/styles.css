@@ -1,0 +1,99 @@
+* {
+	margin:0;
+	padding:0;
+}
+body#error404 {
+	font-size:0.8em;
+	color:#000;
+	font-family: Georgia, "Times New Roman", Times, serif
+}
+a {
+	outline:none;
+	text-decoration:none;
+}
+a img {
+	border:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+a:active {
+	text-decoration:underline
+}
+p {
+	line-height:1.5em;
+	padding-bottom:1em;
+}
+/*-- Float --*/
+
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+
+/*--Layout--*/
+#error404 .wrapper {
+	width:100%;
+	margin:auto;
+	background:url(main-back.jpg) repeat-x;
+}
+#error404 .container {
+	width:960px;
+	margin:auto;
+}
+#error404 .content {
+	width:auto;
+	overflow:hidden;/*For clear div height*/
+}
+
+/*--Left Side--*/
+#error404 .content .leftSide {
+	width:460px;
+	height:480px;
+	background:url(large-404-shape.jpg) no-repeat top;
+	margin:auto;
+}
+#error404 .content .tech {
+	background:url(large-404-shape2.jpg) no-repeat top;
+}
+.leftSide .errorShow {
+	padding-top:160px;
+	padding-left:60px;
+	position:relative;
+	margin-bottom:50px;
+}
+.errorShow h2 {
+	padding-left:100px;
+	font-size:24px;
+	font-weight:normal;
+	color:#d12b2b;
+}
+.errorShow h3 {
+	font-size:20px;
+	color:#d12b2b;
+	font-weight:normal;
+	padding-top:40px;
+}
+.errorShow p {
+	width:200px;
+	padding-top:10px;
+}
+.errorShow .goHome {
+	width:93px;
+	height:93px;
+	position:absolute;
+	top:225px;
+	left:320px;
+}
+.errorShow .goHome a {
+	width:93px;
+	height:93px;
+	background:url(home-icon.jpg) no-repeat top;
+	display:block;
+	text-indent:-999999px;
+}
+.errorShow .goHome a:hover {
+	background-position:bottom;
+}

@@ -1,0 +1,25 @@
+<style type="text/css" media="screen">
+    .splitter{    
+        border: 1px solid #4297D7;
+        background: #5C9CCC url(images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+</style>
+<pre>
+    <?php
+    if (count($this->da)) {
+        var_dump($this->da);
+    }
+    ?>
+</pre>
+
+<?= $this->admin_Head($this->admin_Breadcrumbs($this->breadcrumbs) . ':Добавление нескольких элементов') .
+        $this->admin_Bodybegin() ?>
+
+<?= $this->form ?>
+
+<?=
+$this->admin_Bodyend()?>

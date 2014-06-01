@@ -1,0 +1,124 @@
+<style type="text/css" media="screen">
+    .view_albums {
+        list-style: none;
+        margin: 15px 0 0 0;
+        padding: 0;
+    }
+    #im_block{display:none}
+    .view_albums li {
+        display: block;
+        float: left;
+        width: 220px;
+        min-width: 220px;
+        height: 200px;
+        text-align: center;
+        margin: 10px;
+        border: 1px solid #C5D8DC;
+        padding-top: 8px;
+    }
+    #select_button object{background: #DFEFFC}
+    .mainblock{
+        margin: 15px;
+        color: black;
+        font-size: 14px;
+    }
+    .select_button {
+        border: 1px solid #C5DBEC; 
+        height:23px;
+        float:left;
+        color:#2E6E9E; 
+        font-weight:bold; 
+        text-align:center; 
+        font-size: 15px; 
+        font-family: Arial, sans-serif; 
+        overflow:hidden;
+        -moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+        margin-right: 3px;
+    }
+
+    .progressWrapper {display:inline-block; width:350px}
+    .ers {
+        text-transform: uppercase;
+        color: red;
+        list-style: none;
+        font-weight: bold;
+        min-height: 15px;
+        padding-top: 5px;
+        text-align:center;
+    }
+    .progressWrapper .progressContainer {
+        overflow: auto;
+        zoom: 1;
+        color: blue;
+    }
+    .progressWrapper .progressContainer {overflow: auto; zoom: 1;color: blue;}
+    .progressWrapper .progressName {float:left}
+    .progressWrapper .progressBar .progressBarComplete, .progressWrapper .progressBar .progressBarInProgress {height: 100%;background-color: #ADD240;}
+    .progressWrapper .progressName {
+        float: left;
+    }
+    .progressWrapper .closer {
+        cursor: pointer;
+        float: right;
+        margin-left: 1em;
+        display: none;}
+    .progressWrapper .progressBarStatus {
+        text-align: center;
+        color: #888;
+
+    }
+    .progressWrapper .progressBar {
+        height: 11px;
+        background-color: #888;
+        margin: 4px 0;
+        clear: both;
+    }
+    #progress{text-align: center}
+    .progressWrapper .progressBar .progressBarError {
+        height: 100%;
+        background-color: red;}
+    #clear_button {margin-left:20px}
+    #clear_button a {
+        display:block;
+        background: #DFEFFC;
+        text-decoration: none;
+        width:130px;
+        height: 40px;
+        color:#2E6E9E; 
+        font-weight:bold; 
+        text-align:center; 
+        font-size: 15px; 
+        font-family: Arial, sans-serif; 
+        padding-top: 10px;
+    }
+
+</style>
+<pre>
+<?=
+var_dump($this->debugparams);?>
+</pre>
+<?= $this->admin_Head($this->admin_Breadcrumbs($this->breadcrumbs) . ': Загрузка нескольких элементов') .
+        $this->admin_Bodybegin() ?>
+<?= $this->formMultiimage(null, null, array('res' => $this->recid)) ?>
+<div id="im_block">
+    <form id="z-admin-form-9984511" enctype="multipart/form-data" method="post" class="z-form" action="<?= $this->formaction ?>" target="z-admin-form-9984511_iframe">
+        <ul class="view_albums" id="image_list">
+        </ul>
+        <div class="clear"></div>
+        <dt id="z_form_buttons-label">&nbsp;</dt>
+        <dd id="z_form_buttons-element">
+            <fieldset id="fieldset-z_form_buttons" class="z_form_buttons">
+                <dl>
+                    <?php if(!$this->hasReqired):?>
+                        <input type="submit" name="msubmit" id="submit" value="Сохранить" class="z-form-submit ui-button ui-state-default ui-corner-all z-button">
+                    <?php endif;?>
+                    <input type="submit" name="apply" id="apply" value="Добавить прочие атрибуты" class="z-form-submit ui-button ui-state-default ui-corner-all z-button">
+                </dl>
+            </fieldset>
+        </dd>    
+    </form>
+</div>     
+
+<?= $this->admin_Bodyend() ?>
